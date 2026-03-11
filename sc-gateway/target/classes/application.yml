@@ -1,0 +1,71 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: sc-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+      routes:
+        - id: sc-auth
+          uri: lb://sc-auth
+          predicates:
+            - Path=/api/auth/**
+          filters:
+            - StripPrefix=1
+
+        - id: sc-user
+          uri: lb://sc-user
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=1
+
+        - id: sc-mall
+          uri: lb://sc-mall
+          predicates:
+            - Path=/api/mall/**
+          filters:
+            - StripPrefix=1
+
+        - id: sc-trade
+          uri: lb://sc-trade
+          predicates:
+            - Path=/api/trade/**
+          filters:
+            - StripPrefix=1
+
+        - id: sc-community
+          uri: lb://sc-community
+          predicates:
+            - Path=/api/community/**
+          filters:
+            - StripPrefix=1
+
+        - id: sc-search
+          uri: lb://sc-search
+          predicates:
+            - Path=/api/search/**
+          filters:
+            - StripPrefix=1
+
+security:
+  jwt:
+    # 注意：正式环境请替换为更长更复杂的密钥，并放到 Nacos 配置中心
+    secret: "smart-community-jwt-secret-please-change"
+    expire-seconds: 7200
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+

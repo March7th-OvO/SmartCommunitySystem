@@ -1,0 +1,30 @@
+server:
+  port: 8100
+
+spring:
+  application:
+    name: sc-auth
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/sc_user?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf-8
+          username: root
+          password: 123456
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+security:
+  jwt:
+    secret: "smart-community-jwt-secret-please-change"
+    expire-seconds: 7200
+
+# 找回密码：验证码暂用 mock，对接短信后移除
+auth:
+  forgot-password:
+    mock-code: "123456"
+

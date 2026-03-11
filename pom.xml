@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.neusoft.smartcommunity</groupId>
+    <artifactId>smart-community-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Smart Community Parent</name>
+    <description>Neusoft Smart Community - Spring Cloud Alibaba microservices</description>
+
+    <properties>
+        <java.version>17</java.version>
+        <spring.boot.version>3.2.5</spring.boot.version>
+        <spring.cloud.version>2023.0.1</spring.cloud.version>
+        <spring.cloud.alibaba.version>2023.0.1.0</spring.cloud.alibaba.version>
+        <mybatis.plus.version>3.5.5</mybatis.plus.version>
+        <jjwt.version>0.11.5</jjwt.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spring Cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spring Cloud Alibaba -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- 显式管理版本，避免子模块解析失败 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>8.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-gateway</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <modules>
+        <module>sc-common</module>
+        <module>sc-gateway</module>
+        <module>sc-auth</module>
+        <module>sc-user</module>
+        <module>sc-mall</module>
+        <module>sc-trade</module>
+        <module>sc-community</module>
+        <module>sc-search</module>
+    </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
+

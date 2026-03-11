@@ -1,0 +1,28 @@
+server:
+  port: 8300
+
+spring:
+  application:
+    name: sc-mall
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/sc_mall?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf-8
+          username: root
+          password: 123456
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+
+security:
+  jwt:
+    secret: "smart-community-jwt-secret-please-change"
+    expire-seconds: 7200
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.smartcommunity.mall.mapper.MallStoreProductMapper">
+
+    <update id="lockStock">
+        UPDATE mall_store_product
+        SET stock = stock - #{quantity},
+            locked_stock = locked_stock + #{quantity},
+            updated_at = NOW()
+        WHERE store_id = #{storeId}
+          AND product_id = #{productId}
+          AND stock &gt;= #{quantity}
+    </update>
+
+    <update id="unlockStock">
+        UPDATE mall_store_product
+        SET locked_stock = locked_stock - #{quantity},
+            stock = stock + #{quantity},
+            updated_at = NOW()
+        WHERE store_id = #{storeId}
+          AND product_id = #{productId}
+          AND locked_stock &gt;= #{quantity}
+    </update>
+
+    <update id="confirmStock">
+        UPDATE mall_store_product
+        SET locked_stock = locked_stock - #{quantity},
+            updated_at = NOW()
+        WHERE store_id = #{storeId}
+          AND product_id = #{productId}
+          AND locked_stock &gt;= #{quantity}
+    </update>
+</mapper>

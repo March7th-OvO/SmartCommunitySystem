@@ -1,0 +1,9 @@
+com\neusoft\smartcommunity\search\controller\SearchController.class
+com\neusoft\smartcommunity\search\document\ProductDocument.class
+com\neusoft\smartcommunity\search\controller\InternalProductController.class
+com\neusoft\smartcommunity\search\controller\SearchPingController.class
+com\neusoft\smartcommunity\search\repository\ProductSearchRepository.class
+com\neusoft\smartcommunity\search\service\ProductSearchService.class
+com\neusoft\smartcommunity\search\dto\ProductIndexRequest.class
+com\neusoft\smartcommunity\search\SearchApplication.class
+com\neusoft\smartcommunity\search\service\impl\ProductSearchServiceImpl.class

@@ -1,0 +1,35 @@
+server:
+  port: 8400
+
+spring:
+  application:
+    name: sc-trade
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/sc_trade?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf-8
+          username: root
+          password: 123456
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+# 订单超时未支付自动取消时间（分钟）
+trade:
+  order:
+    unpaid-timeout-minutes: 30
+
+security:
+  jwt:
+    secret: "smart-community-jwt-secret-please-change"
+    expire-seconds: 7200
+

@@ -1,0 +1,22 @@
+package com.neusoft.smartcommunity.common.api;
+
+/**
+ * 业务错误码接口
+ */
+public interface IErrorCode {
+
+    /**
+     * 获取错误码
+     *
+     * @return 错误码
+     */
+    int getCode();
+
+    /**
+     * 获取错误信息
+     *
+     * @return 错误信息
+     */
+    String getMessage();
+}
+
